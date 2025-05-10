@@ -39,8 +39,6 @@ Let's analyze each entity against normalization rules:
   - **Review**: All attributes depend directly on review_id.
   - **Message**: All attributes depend directly on message_id.
 
-
-
 ![Database Schema Diagram](./airbnb-erd.png)
 
 *Figure 1: Normalized database schema diagram showing entity relationships*
