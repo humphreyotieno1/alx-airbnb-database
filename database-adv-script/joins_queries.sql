@@ -18,13 +18,13 @@ ORDER BY
 p.property_id, r.review_id;
 
 -- Retrieve all users and all bookings even if the user has no booking or a booking is not linked to a user
-SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone_number, b.booking_id, b.property_id, b.status FROM
-User u
-LEFT JOIN Booking b
-USING (user_id)
+SELECT u.user_id, u.first_name, u.last_name, u.email, b.booking_id, b.start_date, b.end_date, b.status
+FROM User u
+LEFT JOIN Booking b ON u.user_id = b.user_id
+
 UNION
-SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone_number, b.booking_id, b.property_id, b.status FROM
-User u
-LEFT JOIN Booking b
-USING (user_id)
-WHERE user_id IS NULL;
+
+SELECT u.user_id, u.first_name, u.last_name, u.email, b.booking_id, b.start_date, b.end_date, b.status
+FROM Booking b
+LEFT JOIN User u ON b.user_id = u.user_id
+WHERE u.user_id IS NULL;
