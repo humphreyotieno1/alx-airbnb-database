@@ -22,7 +22,7 @@ SELECT u.user_id, u.first_name, u.last_name, u.email, b.booking_id, b.start_date
 FROM User u
 LEFT JOIN Booking b ON u.user_id = b.user_id
 
-UNION
+FULL OUTER JOIN
 
 SELECT u.user_id, u.first_name, u.last_name, u.email, b.booking_id, b.start_date, b.end_date, b.status
 FROM Booking b
